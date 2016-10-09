@@ -8,30 +8,28 @@ require 'pry'
 # Rankings url
 # http://www.atpworldtour.com/en/rankings/singles?rankDate=2016-10-03&rankRange=1-5000
 
-module DummyRun
-  def self.fetch_remote
+module Atp
 
+  def self.call
+    puts "Fetching remote rankings"
+    puts "Fetching complete"
+    puts "Iterating through urls and parsing each single player page"
+    puts "Iteration complete"
+  end
+
+  def self.fetch_remote
     page = open("http://www.atpworldtour.com/en/rankings/singles?rankDate=2016-10-03&rankRange=1-5000")
     doc = Nokogiri::HTML(page)
 
     urls = gather_urls_from(doc: doc, root_url: "http://www.atpworldtour.com")
-
-    urls.each do |url|
-      puts url
-    end
   end
 
   def self.dummy_run
 
     page = File.open(path, "r")
     doc = Nokogiri::HTML(page)
-    root_url = "http://www.atpworldtour.com"
 
-    urls = gather_urls_from(doc: doc, root_url: root_url)
-
-    urls.each do |url|
-      puts url
-    end
+    urls = gather_urls_from(doc: doc, root_url: "http://www.atpworldtour.com")
   end
 
   def self.path
@@ -39,15 +37,19 @@ module DummyRun
   end
 
   def self.gather_urls_from(doc:, root_url:)
-    urls = []
-    doc.css('td.player-cell').each_with_index do |row, i|
-      urls << "#{root_url}#{row.children[1]['href']}"
+    [].tap do |urls|
+      doc.css('td.player-cell').each_with_index do |row, i|
+        urls << "#{root_url}#{row.children[1]['href']}"
+      end
     end
-    urls
   end
 end
 
-DummyRun.fetch_remote
-# see if this works live
-#
+Atp.call
+urls = Atp.dummy_run
+
+urls.each do |url|
+  puts url
+end
+
 # work on player page
