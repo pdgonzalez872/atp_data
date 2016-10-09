@@ -1,4 +1,5 @@
 require_relative 'atp_data_gatherer'
+require 'thread'
 
 start = Time.now
 
@@ -12,6 +13,7 @@ class Manager
     urls
   end
 
+  # currently not used
   def self.create_player_urls_file(urls:)
     puts "Creating player urls file"
     urls_file = File.open("#{Dir.pwd}/data/player_urls.txt", "w+") do |f|
@@ -23,39 +25,75 @@ class Manager
 
   def self.create_player_data_file(file_path:)
     puts "Creating player data file"
-    File.open(file_path, "w+") do |f|
+    file = File.open(file_path, "w+") do |f|
       f.puts "ranking,first_name,last_name,country,birthday,prize_money"
     end
     puts "Created File"
     true
   end
 
-  def self.gather_all_players_data(urls:, player_file:)
-
+  def self.gather_all_players_data(urls:)
+    # good resource: https://www.toptal.com/ruby/ruby-concurrency-and-parallelism-a-practical-primer
     puts "Iterating through urls and parsing each single player page"
-    urls.each do |url|
 
-      time_before_each_url = Time.now
+    # May need to find a large number to divide here so I can find the best number to make this whole
+    # 2061/9 = 229
+    pool_size = 9
+    semaphore = Mutex.new
 
-      data = ATPDataGatherer.parse_player_page(player_page: open(url))
-      File.open(player_file, "a") do |f|
+    jobs = Queue.new
+
+    urls.each do |i|
+      jobs.push(i)
+    end
+
+    all_data = []
+
+    workers = (pool_size).times.map do |worker|
+      thr = Thread.new(urls, all_data) do |urls, all_data|
+        begin
+          while url = semaphore.synchronize { jobs.pop }
+            time_before_each_url = Time.now
+            # data = url
+            data = ATPDataGatherer.parse_player_page(player_page: open(url))
+            semaphore.synchronize do
+              info = ("#{data['ranking']}," \
+                   "#{data['first_name']}," \
+                   "#{data['last_name']}," \
+                   "#{data['country']}," \
+                   "#{data['birthday']}," \
+                   "#{data['prize_money']}")
+              all_data << data
+              time_after_each_url = Time.now
+              puts "Took #{time_after_each_url - time_before_each_url} secs #{url} in worker ##{worker} - #{info}"
+            end
+          end
+        rescue ThreadError
+        end
+      end
+    end
+
+    workers.each do |worker|
+      worker.join(35)
+    end
+    puts "Iteration complete"
+    all_data
+  end
+
+  def self.write_players_data_to_file(file_path:, all_data:)
+    puts "Writing to players data file"
+    File.open(file_path, "a") do |f|
+      all_data.each do |data|
         f.puts("#{data['ranking']}," \
                "#{data['first_name']}," \
                "#{data['last_name']}," \
                "#{data['country']}," \
                "#{data['birthday']}," \
                "#{data['prize_money']}")
-        puts("#{data['ranking']}," \
-             "#{data['first_name']}," \
-             "#{data['last_name']}," \
-             "#{data['country']}," \
-             "#{data['birthday']}," \
-             "#{data['prize_money']}")
       end
-      time_after_each_url = Time.now
-      puts "Took #{time_after_each_url - time_before_each_url} seconds"
     end
-    puts "Iteration complete"
+    puts "Finished writing"
+    true
   end
 end
 
@@ -64,17 +102,19 @@ def remote_page(date:)
 end
 
 local_page = File.open("#{Dir.pwd}/spec/support/rankings.html", "r")
-player_data_csv = "#{Dir.pwd}/data/player_data_20161003.csv"
+player_data_csv = "#{Dir.pwd}/data/player_data_20161003_testing.csv"
 
-urls = Manager.fetch_rankings_for(page: local_page, on_date: Date.new)
-# urls = Manager.fetch_rankings_for(page: remote_page, on_date: Date.new)
+# urls = Manager.fetch_rankings_for(page: local_page, on_date: Date.new)
+urls = Manager.fetch_rankings_for(page: remote_page(date: Date.new), on_date: Date.new)
 
-urls_file = Manager.create_player_urls_file(urls: urls)
+# Not currently used
+# urls_file = Manager.create_player_urls_file(urls: urls)
 
+all_data = Manager.gather_all_players_data(urls: urls)
 Manager.create_player_data_file(file_path: player_data_csv)
-
-Manager.gather_all_players_data(urls: urls, player_file: player_data_csv)
+Manager.write_players_data_to_file(file_path: player_data_csv, all_data: all_data)
 
 puts 'Metrics'
+puts all_data.length
 finish = Time.now
 puts finish - start
