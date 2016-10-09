@@ -9,7 +9,19 @@ require 'pry'
 # http://www.atpworldtour.com/en/rankings/singles?rankDate=2016-10-03&rankRange=1-5000
 
 module DummyRun
-  def self.run
+  def self.fetch_remote
+
+    page = open("http://www.atpworldtour.com/en/rankings/singles?rankDate=2016-10-03&rankRange=1-5000")
+    doc = Nokogiri::HTML(page)
+
+    urls = gather_urls_from(doc: doc, root_url: "http://www.atpworldtour.com")
+
+    urls.each do |url|
+      puts url
+    end
+  end
+
+  def self.dummy_run
 
     page = File.open(path, "r")
     doc = Nokogiri::HTML(page)
@@ -35,4 +47,7 @@ module DummyRun
   end
 end
 
-DummyRun.run
+DummyRun.fetch_remote
+# see if this works live
+#
+# work on player page
