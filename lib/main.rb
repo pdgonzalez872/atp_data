@@ -25,14 +25,13 @@ module Atp
   end
 
   def self.dummy_run
-
-    page = File.open(path, "r")
+    page = File.open(dummy_rankings_path, "r")
     doc = Nokogiri::HTML(page)
 
     urls = gather_urls_from(doc: doc, root_url: "http://www.atpworldtour.com")
   end
 
-  def self.path
+  def self.dummy_rankings_path
     "#{Dir.pwd}/lib/rankings.html"
   end
 
@@ -43,6 +42,23 @@ module Atp
       end
     end
   end
+
+  def self.parse_player_page(player_page:)
+    doc = Nokogiri::HTML(player_page)
+
+    player_data = {}
+    player_data['first_name'] = doc.css(".player-profile-hero-name .first-name").text
+    player_data['last_name'] = doc.css(".player-profile-hero-name .last-name").text
+    player_data['country'] = doc.css(".player-flag-code").text
+    player_data['birthday'] = raw_birthday(messy_birthday: doc.css(".table-birthday").text)
+    player_data['prize_money'] = doc.css('#playersStatsTable tr').last.css('td').last.children[1].attributes['data-doubles'].value.gsub('$', '')
+    binding.pry
+    puts player_data
+  end
+
+  def self.raw_birthday(messy_birthday:)
+    messy_birthday.gsub(/\t/, '').gsub(/\r\n/, '').gsub('(', '').gsub(')', '').gsub('.', '-')
+  end
 end
 
 Atp.call
@@ -51,5 +67,13 @@ urls = Atp.dummy_run
 urls.each do |url|
   puts url
 end
+
+
+Atp.parse_player_page(player_page: File.open("#{Dir.pwd}/lib/player_page_2.htm"))
+
+# this works!
+#Atp.parse_player_page(player_page: open("http://www.atpworldtour.com/en/players/rafael-nadal/n409/overview"))
+
+
 
 # work on player page
