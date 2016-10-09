@@ -6,11 +6,7 @@ require 'open-uri'
 
 dummy_path = "#{Dir.pwd}/lib/rankings.html"
 
-File.open(dummy_path, "r") do |f|
-  f.each_line do |line|
-    puts line
-  end
-end
+page = File.open(dummy_path, "r")
 
-#stuff = Nokogiri::HTML("rankings.htm")
-#puts stuff
+stuff = Nokogiri::HTML(page)
+puts stuff
