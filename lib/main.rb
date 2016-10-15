@@ -7,7 +7,7 @@ class Manager
   def self.fetch_rankings_for(page:, on_date:)
     puts "Fetching rankings"
     time_before_ranking_request = Time.now
-    urls = ATPDataGatherer.fetch_data_for(page: page) # remote_page trigger is here
+    urls = ATPDataGatherer.fetch_data_for(page: page)
     time_after_ranking_request = Time.now
     puts "Fetching complete, took #{time_after_ranking_request - time_before_ranking_request} seconds"
     urls
@@ -38,6 +38,8 @@ class Manager
 
     # May need to find a large number to divide here so I can find the best number to make this whole
     # 2061/9 = 229
+    #
+    # Maybe create as many jobs as necessary
     pool_size = 9
     semaphore = Mutex.new
 
@@ -74,7 +76,7 @@ class Manager
     end
 
     workers.each do |worker|
-      worker.join(35)
+      worker.join(35) # increase time to join here?
     end
     puts "Iteration complete"
     all_data
@@ -95,26 +97,62 @@ class Manager
     puts "Finished writing"
     true
   end
+
+  def self.linear_fetch_for(output_file_path:, urls:)
+    puts "Creating output file"
+    File.open(output_file_path, "w+") do |f|
+      f.puts "ranking,first_name,last_name,country,birthday,prize_money"
+    end
+    puts "Output file created"
+
+    puts "Iterating through urls and parsing each single player page"
+    urls.each do |url|
+
+      time_before_each_url = Time.now
+
+      data = ATPDataGatherer.parse_player_page(player_page: open(url))
+      File.open(output_file_path, "a") do |f|
+        f.puts("#{data['ranking']}," \
+               "#{data['first_name']}," \
+               "#{data['last_name']}," \
+               "#{data['country']}," \
+               "#{data['birthday']}," \
+               "#{data['prize_money']}")
+        puts("#{data['ranking']}," \
+             "#{data['first_name']}," \
+             "#{data['last_name']}," \
+             "#{data['country']}," \
+             "#{data['birthday']}," \
+             "#{data['prize_money']}")
+      end
+      time_after_each_url = Time.now
+      puts "Took #{time_after_each_url - time_before_each_url} seconds"
+    end
+    puts "Iteration complete"
+  end
 end
 
 def remote_page(date:)
   open("http://www.atpworldtour.com/en/rankings/singles?rankDate=#{date}&rankRange=1-5000")
 end
 
+def threading
+  all_data = Manager.gather_all_players_data(urls: urls)
+  Manager.create_player_data_file(file_path: player_data_csv)
+  Manager.write_players_data_to_file(file_path: player_data_csv, all_data: all_data)
+
+  puts 'Metrics'
+  puts all_data.length
+  finish = Time.now
+  puts finish - start
+end
+
 local_page = File.open("#{Dir.pwd}/spec/support/rankings.html", "r")
-player_data_csv = "#{Dir.pwd}/data/player_data_20161003_testing.csv"
+player_data_csv = "#{Dir.pwd}/data/player_data_20161010.csv"
+ranking_date = '2016-10-10'
 
 # urls = Manager.fetch_rankings_for(page: local_page, on_date: Date.new)
-urls = Manager.fetch_rankings_for(page: remote_page(date: Date.new), on_date: Date.new)
+urls = Manager.fetch_rankings_for(page: remote_page(date: ranking_date), on_date: Date.new)
+Manager.linear_fetch_for(output_file_path: player_data_csv, urls: urls)
 
-# Not currently used
-# urls_file = Manager.create_player_urls_file(urls: urls)
 
-all_data = Manager.gather_all_players_data(urls: urls)
-Manager.create_player_data_file(file_path: player_data_csv)
-Manager.write_players_data_to_file(file_path: player_data_csv, all_data: all_data)
-
-puts 'Metrics'
-puts all_data.length
-finish = Time.now
-puts finish - start
