@@ -1,5 +1,8 @@
 require_relative 'atp_data_gatherer'
 require 'thread'
+require 'rubygems'
+require 'active_support'
+require 'active_support/time'
 
 start = Time.now
 
@@ -151,8 +154,23 @@ local_page = File.open("#{Dir.pwd}/spec/support/rankings.html", "r")
 player_data_csv = "#{Dir.pwd}/data/player_data_20161010.csv"
 ranking_date = '2016-10-10'
 
+def get_past_weeks_monday
+  current_date = Date.current
+  return if current_date.monday?
+
+  while current_date.monday? == false
+    current_date = current_date - 1
+  end
+  "#{current_date.year}-#{current_date.month}-#{current_date.day}"
+end
+
+puts get_past_weeks_monday
+puts "yeah"
+
 # urls = Manager.fetch_rankings_for(page: local_page, on_date: Date.new)
-urls = Manager.fetch_rankings_for(page: remote_page(date: ranking_date), on_date: Date.new)
+urls = Manager.fetch_rankings_for(page: remote_page(date: get_past_weeks_monday), on_date: Date.new)
 Manager.linear_fetch_for(output_file_path: player_data_csv, urls: urls)
+
+# check if today is a monday. If so, run the scraper with the date. If not, do nothing. Send email if run?
 
 
