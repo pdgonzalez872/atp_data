@@ -3,8 +3,7 @@ require 'thread'
 require 'rubygems'
 require 'active_support'
 require 'active_support/time'
-
-start = Time.now
+require 'pry'
 
 class Manager
   def self.fetch_rankings_for(page:, on_date:)
@@ -25,18 +24,11 @@ class Manager
     file
   end
 
-  def self.gather_all_players_data(urls:)
-
-    # remove this later
-    urls = urls.take(100)
+  def self.gather_all_players_data(urls:, pool_size:)
 
     # vars
-    pool_size = 10
     jobs_mutex   = Mutex.new
     result_mutex = Mutex.new
-
-    puts "Starting processes for #{urls.size} urls"
-
     all_data = []
 
     workers = (pool_size).times.map do |worker|
@@ -57,7 +49,6 @@ class Manager
                  "#{data['prize_money']}"
 
           result_mutex.synchronize do
-            puts "all_data.size -> #{all_data.size}"
             all_data << data
           end
 
@@ -66,19 +57,11 @@ class Manager
         end
       end
     end
-    puts "Joining Threads"
     workers.each(&:join)
-    puts "Iteration complete"
     all_data
   end
 
   def self.write_players_data_to_file(file_path:, all_data:)
-
-    puts "Creating player data file"
-    file = File.open(file_path, "w+") do |f|
-      f.puts "ranking,first_name,last_name,country,birthday,prize_money"
-    end
-    puts "Created File"
 
     puts "Writing to players data file"
     File.open(file_path, "a") do |f|
@@ -110,10 +93,47 @@ def get_past_weeks_monday
   "#{current_date.year}-#{current_date.month}-#{current_date.strftime("%d")}"
 end
 
-ranking_date = get_past_weeks_monday
-player_data_csv = "#{Dir.pwd}/data/player_data_#{ranking_date.gsub('-', '')}.csv"
+class RankingFetcher
+
+  attr_reader :date, :file_path
+
+  def create_filepath
+    "#{Dir.pwd}/data/player_data_#{get_past_weeks_monday.gsub('-', '')}.csv"
+  end
+
+
+  def remote_page(date:)
+    open("http://www.atpworldtour.com/en/rankings/singles?rankDate=#{date}&rankRange=1-5000")
+  end
+
+  def get_past_weeks_monday
+    current_date = Date.current
+    return if current_date.monday?
+
+    while current_date.monday? == false
+      current_date = current_date - 1
+    end
+    "#{current_date.year}-#{current_date.month}-#{current_date.strftime("%d")}"
+  end
+end
+
+# ranking_date = get_past_weeks_monday
+ranking_fetcher = RankingFetcher.new
+ranking_date = ranking_fetcher.get_past_weeks_monday
+
+# player_data_csv = "#{Dir.pwd}/data/player_data_#{ranking_date.gsub('-', '')}.csv"
+player_data_csv = ranking_fetcher.create_filepath #"#{Dir.pwd}/data/player_data_#{ranking_date.gsub('-', '')}.csv"
+Manager.create_player_data_file(file_path: player_data_csv)
 
 urls = Manager.fetch_rankings_for(page: remote_page(date: ranking_date), on_date: Date.new)
-all_data = Manager.gather_all_players_data(urls: urls)
 
-Manager.write_players_data_to_file(file_path: player_data_csv, all_data: all_data)
+magic_number = 100
+
+urls = urls.take(magic_number)
+
+urls.each_slice(magic_number).to_a.each do |subset|
+  a = Manager.gather_all_players_data(urls: subset, pool_size: subset.size)
+  Manager.write_players_data_to_file(file_path: player_data_csv, all_data: a)
+end
+
+# i think the problem i when there is a greater number of threads created in the pool size than necessary
