@@ -6,17 +6,11 @@ require 'active_support/time'
 require 'pry'
 
 class Manager
-  def self.fetch_rankings_for(page:, on_date:)
-    puts "Fetching rankings"
-    time_before_ranking_request = Time.now
-    urls = ATPDataGatherer.fetch_data_for(page: page)
-    time_after_ranking_request = Time.now
-    puts "Fetching complete, took #{time_after_ranking_request - time_before_ranking_request} seconds"
-    urls
+  def self.fetch_rankings_for(page:)
+    ATPDataGatherer.fetch_data_for(page: page)
   end
 
   def self.create_player_data_file(file_path:)
-    puts "Creating player data file"
     file = File.open(file_path, "w+") do |f|
       f.puts "ranking,first_name,last_name,country,birthday,prize_money"
     end
@@ -24,7 +18,7 @@ class Manager
     file
   end
 
-  def self.gather_all_players_data(urls:, pool_size:)
+  def self.gather_data_from_urls(urls:, pool_size:)
 
     # vars
     jobs_mutex   = Mutex.new
@@ -61,11 +55,9 @@ class Manager
     all_data
   end
 
-  def self.write_players_data_to_file(file_path:, all_data:)
-
-    puts "Writing to players data file"
+  def self.write_data_to_file(file_path:, data:)
     File.open(file_path, "a") do |f|
-      all_data.each do |data|
+      data.each do |data|
         f.puts("#{data['ranking']}," \
                "#{data['first_name']}," \
                "#{data['last_name']}," \
@@ -74,30 +66,46 @@ class Manager
                "#{data['prize_money']}")
       end
     end
-    puts "Finished writing"
-    true
   end
-end
 
-def remote_page(date:)
-  open("http://www.atpworldtour.com/en/rankings/singles?rankDate=#{date}&rankRange=1-5000")
-end
+  def self.main
 
-def get_past_weeks_monday
-  current_date = Date.current
-  return if current_date.monday?
+    slice_size = 50; delimiter = '-'
 
-  while current_date.monday? == false
-    current_date = current_date - 1
+    ranking_fetcher = RankingFetcher.new
+    ranking_date = ranking_fetcher.get_past_weeks_monday
+    page = ranking_fetcher.remote_page(date: ranking_date)
+
+    file_path = ranking_fetcher.filepath_with_date
+
+    puts "Creating player data file"
+    Manager.create_player_data_file(file_path: file_path)
+    puts "#{delimiter * 1} File created"
+
+    puts "Fetching ranking list"
+    urls = Manager.fetch_rankings_for(page: page)
+    puts "#{delimiter * 1} Ranking list fetch completed"
+
+    # This is so we have short feedback
+    urls = urls.take(slice_size)
+
+    urls.each_slice(slice_size).to_a.each do |subset|
+      puts "Gathering Data"
+      data = Manager.gather_data_from_urls(urls: subset, pool_size: subset.size)
+      puts "#{delimiter * 1} Gathered Data"
+
+      puts "Writing to players data file"
+      Manager.write_data_to_file(file_path: file_path, data: data)
+      puts "#{delimiter * 1} Finished writing"
+    end
   end
-  "#{current_date.year}-#{current_date.month}-#{current_date.strftime("%d")}"
 end
 
 class RankingFetcher
 
   attr_reader :date, :file_path
 
-  def create_filepath
+  def filepath_with_date
     "#{Dir.pwd}/data/player_data_#{get_past_weeks_monday.gsub('-', '')}.csv"
   end
 
@@ -117,23 +125,7 @@ class RankingFetcher
   end
 end
 
-# ranking_date = get_past_weeks_monday
-ranking_fetcher = RankingFetcher.new
-ranking_date = ranking_fetcher.get_past_weeks_monday
+Manager.main
 
-# player_data_csv = "#{Dir.pwd}/data/player_data_#{ranking_date.gsub('-', '')}.csv"
-player_data_csv = ranking_fetcher.create_filepath #"#{Dir.pwd}/data/player_data_#{ranking_date.gsub('-', '')}.csv"
-Manager.create_player_data_file(file_path: player_data_csv)
-
-urls = Manager.fetch_rankings_for(page: remote_page(date: ranking_date), on_date: Date.new)
-
-magic_number = 100
-
-urls = urls.take(magic_number)
-
-urls.each_slice(magic_number).to_a.each do |subset|
-  a = Manager.gather_all_players_data(urls: subset, pool_size: subset.size)
-  Manager.write_players_data_to_file(file_path: player_data_csv, all_data: a)
-end
-
-# i think the problem i when there is a greater number of threads created in the pool size than necessary
+# Notes:
+# i think the threading problem I was having was when there is a greater number of threads created in the pool size than necessary
