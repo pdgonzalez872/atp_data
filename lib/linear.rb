@@ -6,6 +6,7 @@ require 'active_support/time'
 
 start = Time.now
 
+# This is now deprecated. Use the threaded version instead. You can set the pool size to 1 if you need.
 class Manager
   def self.fetch_rankings_for(page:, on_date:)
     puts "Fetching rankings"
