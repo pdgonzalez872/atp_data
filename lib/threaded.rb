@@ -69,8 +69,9 @@ class Manager
   end
 
   def self.main
+    slice_size = 50
 
-    slice_size = 50; delimiter = '-'
+    delimiter = '-'
 
     ranking_fetcher = RankingFetcher.new
     ranking_date = ranking_fetcher.get_past_weeks_monday
@@ -87,7 +88,7 @@ class Manager
     puts "#{delimiter * 1} Ranking list fetch completed"
 
     # This is so we have short feedback
-    urls = urls.take(slice_size)
+    # urls = urls.take(slice_size)
 
     urls.each_slice(slice_size).to_a.each do |subset|
       puts "Gathering Data"
