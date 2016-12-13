@@ -117,7 +117,7 @@ class RankingFetcher
 
   def get_past_weeks_monday
     current_date = Date.current
-    return if current_date.monday?
+    return  "#{current_date.year}-#{current_date.month}-#{current_date.strftime("%d")}" if current_date.monday?
 
     while current_date.monday? == false
       current_date = current_date - 1
