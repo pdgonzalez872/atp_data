@@ -69,7 +69,7 @@ class Manager
   end
 
   def self.main
-    slice_size = 5
+    slice_size = 10
 
     delimiter = '-'
 
