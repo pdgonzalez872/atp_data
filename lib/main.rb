@@ -1,8 +1,7 @@
 require_relative 'atp_data_gatherer'
+require_relative 'ranking_fetcher_utils'
 require 'thread'
 require 'rubygems'
-require 'active_support'
-require 'active_support/time'
 require 'pry'
 
 class Manager
@@ -99,30 +98,6 @@ class Manager
       Manager.write_data_to_file(file_path: file_path, data: data)
       puts "#{delimiter * 1} Finished writing"
     end
-  end
-end
-
-class RankingFetcher
-
-  attr_reader :date, :file_path
-
-  def filepath_with_date
-    "#{Dir.pwd}/data/player_data_#{get_past_weeks_monday.gsub('-', '')}.csv"
-  end
-
-
-  def remote_page(date:)
-    open("http://www.atpworldtour.com/en/rankings/singles?rankDate=#{date}&rankRange=1-5000")
-  end
-
-  def get_past_weeks_monday
-    current_date = Date.current
-    return  "#{current_date.year}-#{current_date.month}-#{current_date.strftime("%d")}" if current_date.monday?
-
-    while current_date.monday? == false
-      current_date = current_date - 1
-    end
-    "#{current_date.year}-#{current_date.month}-#{current_date.strftime("%d")}"
   end
 end
 
