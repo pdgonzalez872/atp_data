@@ -70,7 +70,10 @@ class Manager
   end
 end
 
+start = Time.now
+puts "Starting at #{start}"
 Manager.main
+puts "Took #{Time.now - start}"
 
 # Notes:
 # i think the threading problem I was having was when there is a greater number of threads created in the pool size than necessary
