@@ -53,12 +53,9 @@ class Manager
     page = RankingFetcherUtils.remote_page(date: ranking_date_string)
     file_path = RankingFetcherUtils.filepath_with_date(date: ranking_date_string)
 
-    # move this to Utils
     RankingFetcherUtils.create_player_data_file(file_path: file_path)
-    puts "#{delimiter * delimiter_size} File created"
 
     puts "Fetching ranking list"
-    # this is the ATP method, replace
     urls = ATPDataGatherer.fetch_data_for(page: page)
     puts "#{delimiter * delimiter_size} Ranking list fetch completed"
 

@@ -48,4 +48,5 @@ class RankingFetcherUtils
   end
 
   def self.parse_player_data
+  end
 end
