@@ -5,17 +5,6 @@ require 'rubygems'
 require 'pry'
 
 class Manager
-  def self.fetch_rankings_for(page:)
-    ATPDataGatherer.fetch_data_for(page: page)
-  end
-
-  def self.create_player_data_file(file_path:)
-    file = File.open(file_path, "w+") do |f|
-      f.puts "ranking,first_name,last_name,country,birthday,prize_money"
-    end
-    puts "Created File"
-    file
-  end
 
   def self.gather_data_from_urls(urls:, pool_size:)
 
@@ -54,50 +43,33 @@ class Manager
     all_data
   end
 
-  def self.write_data_to_file(file_path:, data:)
-    File.open(file_path, "a") do |f|
-      data.each do |data|
-        f.puts("#{data['ranking']}," \
-               "#{data['first_name']}," \
-               "#{data['last_name']}," \
-               "#{data['country']}," \
-               "#{data['birthday']}," \
-               "#{data['prize_money']}")
-      end
-    end
-  end
-
   def self.main
     slice_size = 10
 
     delimiter = '-'
+    delimiter_size = 5
 
-    ranking_fetcher = RankingFetcher.new
-    ranking_date = ranking_fetcher.get_past_weeks_monday
-    page = ranking_fetcher.remote_page(date: ranking_date)
+    ranking_date_string = RankingFetcherUtils.get_past_weeks_monday
+    page = RankingFetcherUtils.remote_page(date: ranking_date_string)
+    file_path = RankingFetcherUtils.filepath_with_date(date: ranking_date_string)
 
-    file_path = ranking_fetcher.filepath_with_date
-
-    puts "Creating player data file"
-    Manager.create_player_data_file(file_path: file_path)
-    puts "#{delimiter * 1} File created"
+    # move this to Utils
+    RankingFetcherUtils.create_player_data_file(file_path: file_path)
+    puts "#{delimiter * delimiter_size} File created"
 
     puts "Fetching ranking list"
-    urls = Manager.fetch_rankings_for(page: page)
-    puts "#{delimiter * 1} Ranking list fetch completed"
-
-    # This is so we have short feedback
-    # urls = urls.take(slice_size)
+    # this is the ATP method, replace
+    urls = ATPDataGatherer.fetch_data_for(page: page)
+    puts "#{delimiter * delimiter_size} Ranking list fetch completed"
 
     urls.each_slice(slice_size).to_a.each do |subset|
       puts "Gathering Data"
       data = Manager.gather_data_from_urls(urls: subset, pool_size: subset.size)
-      puts "#{delimiter * 1} Gathered Data"
+      puts "#{delimiter * delimiter_size} Gathered Data"
 
-      puts "Writing to players data file"
-      Manager.write_data_to_file(file_path: file_path, data: data)
-      puts "#{delimiter * 1} Finished writing"
+      RankingFetcherUtils.write_data_to_file(file_path: file_path, data: data)
     end
+    # maybe do the file ordering here?
   end
 end
 
