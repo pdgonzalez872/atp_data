@@ -94,4 +94,4 @@ class RankingFetcherUtils
 end
 
 # one time use -> order all files
-Dir.glob("data/*.csv") { |file| puts RankingFetcherUtils.order_by_prize_money(file: file)}
+# Dir.glob("data/*.csv") { |file| puts RankingFetcherUtils.order_by_prize_money(file: file)}
