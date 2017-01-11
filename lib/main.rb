@@ -44,6 +44,7 @@ class Manager
   end
 
   def self.main
+    raise "Uncomment line 70, so we can order the data next time. This is to remind you"
     slice_size = 10
 
     delimiter = '-'
@@ -66,7 +67,7 @@ class Manager
 
       RankingFetcherUtils.write_data_to_file(file_path: file_path, data: data)
     end
-    # maybe do the file ordering here?
+    # RankingFetcherUtils.order_by_prize_money(file: file_path)
   end
 end
 
