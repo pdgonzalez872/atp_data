@@ -43,10 +43,55 @@ class RankingFetcherUtils
     current_date.strftime("%Y-%m-%d")
   end
 
-  # order file by amount won method
+  # order file by prizemoney
+  # return Boolean
   def self.order_by_prize_money(file:)
+    player_data = []
+    headers = ""
+
+    File.open(file, 'r') do |f|
+      headers = f.gets.chomp
+
+      f.each_line do |line|
+        player_data << parse_player_data(line: line)
+      end
+    end
+
+    # duplication here, can be dried out -> pass a w,r,a, arg and if from there?
+    File.open(file, "w+") do |f|
+      f.puts headers
+      sorted_array = sort_array_of_hashes(array_of_hashes: player_data)
+      sorted_array.each do |data|
+        f.puts("#{data['ranking']}," \
+               "#{data['first_name']}," \
+               "#{data['last_name']}," \
+               "#{data['country']}," \
+               "#{data['birthday']}," \
+               "#{data['prize_money']}")
+      end
+    end
+    true
   end
 
-  def self.parse_player_data
+  # return Hash
+  def self.parse_player_data(line:)
+    data = {}
+    temp = line.delete("\n").split(",")
+
+    data['ranking']     = temp[0]
+    data['first_name']  = temp[1]
+    data['last_name']   = temp[2]
+    data['country']     = temp[3]
+    data['birthday']    = temp[4]
+    data['prize_money'] = temp[5].to_i
+    data
+  end
+
+  # return Array
+  def self.sort_array_of_hashes(array_of_hashes:)
+    array_of_hashes.sort_by { |hsh| -hsh['prize_money'] }
   end
 end
+
+# one time use -> order all files
+Dir.glob("data/*.csv") { |file| puts RankingFetcherUtils.order_by_prize_money(file: file)}
