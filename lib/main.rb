@@ -82,9 +82,8 @@ puts "Starting at #{start}"
 Manager.main # (date: date) # -> pass it in
 puts "Took #{Time.now - start}"
 
-date = RankingFetcherUtils.get_past_weeks_monday(date: Date.today)
-
 # quick and dirty script to automate things
+date = RankingFetcherUtils.get_past_weeks_monday(date: Date.today)
 system("git status")
 system("git add .")
 system("git commit -m 'Fetch data for -> #{date}'")
