@@ -8,5 +8,5 @@ date = RankingFetcherUtils.get_past_weeks_monday(date: Date.today)
 
 system("git status")
 system("git add .")
-system("git commit -m '#{date}'")
-
+system("git commit -m 'Fetch data for -> #{date}'")
+system("git push origin master")
