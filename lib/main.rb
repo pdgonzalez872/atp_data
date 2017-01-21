@@ -21,7 +21,12 @@ class Manager
         while jobs_mutex.synchronize { url = urls.pop }
           time_before_each_url = Time.now
 
-          data = ATPDataGatherer.parse_player_page(player_page: open(url))
+          begin
+            data = ATPDataGatherer.parse_player_page(player_page: open(url))
+          rescue
+            puts "ERROR fetching #{url}, retrying..."
+            data = ATPDataGatherer.parse_player_page(player_page: open(url))
+          end
 
           info = "#{data['ranking']}," \
                  "#{data['first_name']}," \
@@ -43,14 +48,13 @@ class Manager
     all_data
   end
 
-  def self.main
-    raise "Uncomment line 70, so we can order the data next time. This is to remind you"
+  def self.main(date: nil)
     slice_size = 10
 
     delimiter = '-'
     delimiter_size = 5
 
-    ranking_date_string = RankingFetcherUtils.get_past_weeks_monday
+    ranking_date_string = RankingFetcherUtils.get_past_weeks_monday(date: date)
     page = RankingFetcherUtils.remote_page(date: ranking_date_string)
     file_path = RankingFetcherUtils.filepath_with_date(date: ranking_date_string)
 
