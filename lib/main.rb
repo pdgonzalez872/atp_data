@@ -49,7 +49,7 @@ class Manager
   end
 
   def self.main(date: nil)
-    slice_size = 10
+    slice_size = 20
 
     delimiter = '-'
     delimiter_size = 5
@@ -71,14 +71,13 @@ class Manager
 
       RankingFetcherUtils.write_data_to_file(file_path: file_path, data: data)
     end
-    # RankingFetcherUtils.order_by_prize_money(file: file_path)
+    RankingFetcherUtils.order_by_prize_money(file: file_path)
   end
 end
 
 start = Time.now
 puts "Starting at #{start}"
-Manager.main
+# Can pass date, example below:
+# date = Date.new(2017, 1, 16) # choose date
+Manager.main # (date: date) # -> pass it in
 puts "Took #{Time.now - start}"
-
-# Notes:
-# i think the threading problem I was having was when there is a greater number of threads created in the pool size than necessary
