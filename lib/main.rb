@@ -49,7 +49,7 @@ class Manager
   end
 
   def self.main(date: nil)
-    slice_size = 20
+    slice_size = 10
 
     delimiter = '-'
     delimiter_size = 5
