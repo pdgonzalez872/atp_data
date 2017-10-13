@@ -670,7 +670,7 @@ ranking,first_name,last_name,country,birthday,prize_money
 366,Jorge,Montero,CHI,1990-09-21,50150
 596,Francesco,Vilardo,ITA,1989-12-28,50130
 412,Lorenzo,Frigerio,ITA,1989-02-17,50045
-269,Fred,Simonsson,SWE,1994-11-27,49753
+269269,FredFred,SimonssonSimonsson,SWESWE,1994-11-271994-11-27,49753
 875,Duje,Kekez,CRO,1993-03-30,49680
 310,Sumit,Nagal,IND,1997-08-16,49626
 381,Hubert,Hurkacz,POL,1997-02-11,49297
@@ -1205,8 +1205,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1504,Paul,Cayre,FRA,1995-04-26,10835
 1108,Harshana,Godamanna,SRI,1985-10-31,10760
 1406,Zhao,Cai,CHN,1994-07-05,10753
-1424,Vitalii,Shcherba,UKR,1997-03-24,10744
 837,Yu  Hsiang,Chiu,TPE,1994-11-05,10744
+1424,Vitalii,Shcherba,UKR,1997-03-24,10744
 1670,Stefan,Borg,SWE,1983-06-15,10658
 1538,Yuki,Matsuo,JPN,1990-10-15,10656
 932,Chan-yeong,Oh,KOR,1998-06-27,10638
@@ -1416,8 +1416,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1879,Riaan,Du Toit,CAN,1994-04-15,6102
 784,Shao-Fan,Liu,TPE,1997-01-30,6098
 779,Tae-Woo,Lee,KOR,1991-12-19,6093
-1563,Andrey,Yakovlev,RUS,1992-08-18,6078
 1324,Tomas,Gerini,ARG,1995-07-20,6078
+1563,Andrey,Yakovlev,RUS,1992-08-18,6078
 1319,Franco,Capalbo,ARG,1997-12-26,6075
 917,Seong-Gook,Oh,KOR,1992-04-23,6061
 1959,Eduardo Yahir,Orozco Rangel,MEX,1992-05-29,6050
@@ -1437,8 +1437,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 992,Ryan,Peniston,GBR,1995-11-10,5809
 1775,Jan,Zednik,CZE,1993-01-05,5808
 1046,Yu Hsiou,Hsu,TPE,1999-04-02,5806
-1538,Motvey,Radionov,ISR,1997-05-21,5806
 1097,Jonas,Trinker,AUT,1995-08-29,5806
+1538,Motvey,Radionov,ISR,1997-05-21,5806
 1324,Alexandru Vasile,Manole,ROU,1998-09-21,5802
 1074,Rui-Xuan,Wang,CHN,1996-03-27,5800
 942,Alexis,Gautier,FRA,1997-04-07,5794
@@ -1452,8 +1452,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1017,Keegan,Smith,USA,1998-06-23,5646
 2013,Antoine,Leduc,CAN,1988-01-24,5568
 1086,Yshai,Oliel,ISR,2000-01-05,5560
-1106,Grigoriy,Lomakin,KAZ,1998-03-18,5556
 1278,Thibault,Cancel,FRA,1997-09-17,5556
+1106,Grigoriy,Lomakin,KAZ,1998-03-18,5556
 1119,Anirudh,Chandrasekar,IND,1998-07-11,5537
 1595,Marcus,Mansson,SWE,1995-08-16,5536
 1670,Alec,Witmeur,BEL,1989-07-30,5527
@@ -1515,8 +1515,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1029,Tyler,Mercier,USA,1991-06-21,4876
 1424,Alessandro,Ceppellini,ITA,1996-10-07,4873
 1668,Alexis,Canter,GBR,1998-06-03,4864
-1320,Milos,Nikolic,SRB,1997-12-26,4855
 1879,Andrei,Patrui,ROU,1996-07-01,4855
+1320,Milos,Nikolic,SRB,1997-12-26,4855
 1424,Alexandru,Danes,FRA,1993-11-06,4830
 1654,Nikolay,Kolobaev,ISR,1998-05-01,4826
 694,Mateusz,Smolicki,POL,1997-10-10,4814
@@ -1548,8 +1548,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1595,Luciano,Betella,ARG,1995-11-23,4464
 1122,Jordan,Hasson,ISR,1999-10-12,4460
 1879,Adriano,Quinti,GER,1988-05-10,4454
-1538,Mihail,Khaldeev,RUS,1994-09-06,4444
 1217,Geronimo,Espin Busleiman,ARG,1997-12-02,4444
+1538,Mihail,Khaldeev,RUS,1994-09-06,4444
 1299,Tadas,Babelis,LTU,1997-02-25,4442
 1446,Nathan,Seateun,FRA,1997-06-25,4394
 1426,Alexander,Babanine,AUS,1994-09-06,4360
@@ -1575,14 +1575,14 @@ ranking,first_name,last_name,country,birthday,prize_money
 1078,Sergio Luis,Hernandez Ramirez,COL,1999-08-28,4036
 890,Edward,Bourchier,AUS,1988-11-14,4026
 1775,Nick,Hardt,DOM,2000-09-20,4024
-1151,Nicolas,Alvarez Varona,ESP,2001-05-18,4020
 961,Fernando,Bogajo,ESP,1992-10-12,4020
+1151,Nicolas,Alvarez Varona,ESP,2001-05-18,4020
 1564,Thomas,Otu,NGR,1993-11-30,3996
 1424,Agustin,Suarez Gonzalez,ARG,1993-04-13,3994
 1464,Jose Antonio,Rodriguez Rodriguez,MEX,1995-04-24,3928
 1223,Aleksandre,Bakshi,GEO,1997-07-15,3889
-1183,Masaya,Kobayashi,JPN,1997-09-22,3886
 972,Maxence,Broville,FRA,1999-01-31,3886
+1183,Masaya,Kobayashi,JPN,1997-09-22,3886
 1206,Justin,Roberts,BAH,1996-12-04,3863
 1358,Dae-Hee,Lee,KOR,1991-04-06,3842
 1439,Leandro,Serrano Sanz,ESP,1994-05-27,3834
@@ -1610,8 +1610,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1534,Robin,Lang,GER,1996-02-03,3568
 1209,Sergio,Barranco,ESP,1993-04-02,3554
 1051,Dhruv,Sunish,IND,1999-11-19,3500
-1274,A.J.,Catanzariti,USA,1995-08-21,3488
 2089,Chengze,Lyu,CHN,,3488
+1274,A.J.,Catanzariti,USA,1995-08-21,3488
 1175,Matteo,De Vincentis,ITA,1998-04-25,3434
 1315,Alafia,Ayeni,USA,1999-08-10,3410
 1227,Mattias,Siimar,EST,1998-02-03,3394
@@ -1642,8 +1642,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 2051,Mislav,Bosnjak,AUS,1998-06-04,3120
 2063,Isaac,Stoute,GBR,1996-04-12,3114
 1587,Pablo,Irigaray Guarne,ESP,1997-02-18,3106
-1483,Nitin Kumar,Sinha,IND,1999-02-20,3091
 1564,Eduard,Guell Bartrina,ESP,1998-09-06,3091
+1483,Nitin Kumar,Sinha,IND,1999-02-20,3091
 1424,Chukang,Wang,CHN,1999-09-06,3082
 975,Linus,Frost,SWE,1995-06-14,3081
 1290,Luca,Castelnuovo,SUI,1997-01-29,3052
@@ -1669,8 +1669,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1462,Rayane,Oumaouche,FRA,1997-06-22,2816
 1301,Adrian,Oetzbach,GER,1997-10-29,2812
 1166,Colin,Sinclair,USA,1994-12-19,2809
-1240,Patrick,Mayer,GER,1994-01-05,2802
 1330,Antonin,Bolardt,CZE,1998-06-07,2802
+1240,Patrick,Mayer,GER,1994-01-05,2802
 1286,Jonas,Eriksson Ziverts,SWE,1999-01-08,2792
 1230,Matthew Christopher,Romios,AUS,1999-03-29,2762
 1482,Zizou,Bergs,BEL,1999-06-03,2759
@@ -1695,14 +1695,14 @@ ranking,first_name,last_name,country,birthday,prize_money
 1775,Shi Hong,Zeng,CHN,1997-07-18,2648
 1959,Maxim,Geraskin,RUS,1985-11-26,2637
 1377,Dong-Hak,Sin,KOR,1992-02-26,2610
-1384,Tao,Mu,CHN,2000-04-28,2596
 1137,Tim,Ruehl,GER,1998-03-31,2596
+1384,Tao,Mu,CHN,2000-04-28,2596
 1470,Josh,Hagar,USA,1994-02-23,2558
 1170,Naru,Shirafuji,JPN,1998-04-30,2552
 1156,Sven,Lah,SLO,1998-10-11,2536
 1670,Ettore,Capello,ITA,1990-04-20,2490
-1775,Anastasios,Pavlis,GRE,1993-05-25,2482
 1649,Eduardo,Ribeiro,BRA,1998-03-17,2482
+1775,Anastasios,Pavlis,GRE,1993-05-25,2482
 1564,Michal,Marko,SVK,1996-05-12,2468
 1305,Nikita,Mashtakov,UKR,1999-03-18,2452
 2078,Vasisht,Cheruku,IND,1999-06-14,2438
@@ -1742,8 +1742,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1879,Guilherme,Osorio,BRA,1998-09-27,2146
 1079,Charles,Broom,GBR,1998-04-24,2133
 1775,Johannes,Myburgh,RSA,1993-10-01,2132
-1775,Marco,Mosciatti,ITA,1997-07-16,2122
 1595,Niklas,Johansson,SWE,1998-10-07,2122
+1775,Marco,Mosciatti,ITA,1997-07-16,2122
 1775,Pavle,Daljev,SRB,1992-02-23,2114
 1079,Finn,Bass,GBR,1999-10-09,2113
 1396,Alexander,Knight,USA,1996-12-11,2108
@@ -1765,8 +1765,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1340,Jonathan,Binding,GBR,1993-03-13,2018
 1462,Franco,Ribero,ARG,1999-09-09,2014
 1646,Jakob,Aichhorn,AUT,1998-09-22,2008
-1305,Arthur,Weber,FRA,1992-05-09,2004
 1538,Leon,Hoeveler,GER,1995-12-25,2004
+1305,Arthur,Weber,FRA,1992-05-09,2004
 1477,Charly,Zick,GER,1996-09-03,1996
 1156,Yuto,Sakai,JPN,1996-08-12,1993
 1494,Aliaksandr,Liaonenka,BLR,1999-03-17,1988
@@ -1777,8 +1777,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1670,Alexander,Cozbinov,MDA,1995-04-28,1972
 1293,Yuta,Shimizu,JPN,1999-06-09,1968
 1400,Luka,Pavlovic,FRA,2000-03-30,1956
-1464,Stefan,Skadarka,AUS,1998-12-21,1954
 1619,Samir,Iftikhar,PAK,1992-03-23,1954
+1464,Stefan,Skadarka,AUS,1998-12-21,1954
 2051,Lucas,Koelle,BRA,1998-06-01,1952
 1377,David,Nguyen,USA,1989-10-29,1946
 1619,Daniel,Rodrigues,POR,2000-02-11,1940
@@ -1800,8 +1800,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1228,Remy,Bertola,SUI,1998-08-31,1858
 1361,Marek,Rehacek,CZE,1996-04-12,1857
 1504,Sharmal,Dissanayake,SRI,1996-05-14,1856
-1670,Nicolas,Mejia,COL,2000-02-11,1826
 1775,Sang-Yuop,Kim,KOR,1994-09-01,1826
+1670,Nicolas,Mejia,COL,2000-02-11,1826
 1631,Maikel,Borg,NED,1997-08-14,1822
 1959,Lev,Kazakov,RUS,1998-09-18,1816
 1534,Marvin Bernardo,Spiering,BRA,1997-09-08,1805
@@ -1813,12 +1813,12 @@ ranking,first_name,last_name,country,birthday,prize_money
 1879,Nicolas,Ferrando,ARG,1996-06-25,1770
 1563,David Damian,Brna,SVK,1998-05-21,1768
 1538,Alen,Rogic-Hadzalic,CRO,1997-04-21,1768
-1775,Warren,Kuhn,RSA,1993-10-22,1760
+17751775,WarrenWarren,KuhnKuhn,RSARSA,1993-10-221993-10-22,1760
 1670,Daniel,Czepielewski,GER,1996-04-21,1742
-1304,Martim,Leote Prata,POR,2000-08-26,1738
-1384,Sorin Andrei,Iordache,ROU,1998-09-04,1738
 1384,Masaki,Osafune,JPN,1995-03-07,1738
+1304,Martim,Leote Prata,POR,2000-08-26,1738
 1354,Kaito,Itsusaki,JPN,1997-11-13,1738
+1384,Sorin Andrei,Iordache,ROU,1998-09-04,1738
 1408,Michael,Vrbensky,CZE,1999-12-26,1732
 1879,Aron,Pierce,USA,1997-01-04,1726
 1307,Greg,Polmans,AUS,2000-01-10,1712
@@ -1848,8 +1848,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1612,Alejandro,Hoyos,COL,1999-09-17,1584
 1959,Daniele,Catini,ITA,1995-10-18,1576
 1959,Oleg,Koval,UKR,1995-10-14,1572
-1384,Mohamed,Abdel-Aziz,EGY,1998-12-21,1568
 1959,Bruno Luca,Faletto Ureta,CHI,1998-04-07,1568
+1384,Mohamed,Abdel-Aziz,EGY,1998-12-21,1568
 1670,Mark,Burgos,FRA,1982-08-03,1563
 1595,Fermin,Tenti,ARG,1997-06-14,1560
 1595,Jordi,Walder,GER,1998-07-19,1554
@@ -1862,8 +1862,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1879,Abdulhamid,Mubarak,KUW,1994-04-08,1496
 2063,Imanol,Lopez Morillo,ESP,1999-11-18,1494
 1595,Stamatis,Kapiris,GRE,1999-06-02,1488
-1538,David,Hopkins,USA,1989-12-28,1482
 1504,Anurag,Nenwani,IND,1998-05-09,1482
+1538,David,Hopkins,USA,1989-12-28,1482
 1494,Martin,Dimitrov,BUL,1997-03-10,1480
 1879,Christopher G,Haworth,USA,1993-04-27,1478
 1370,Kittirat,Kerdlapee,THA,1999-10-11,1452
@@ -1902,21 +1902,21 @@ ranking,first_name,last_name,country,birthday,prize_money
 2051,Matvey,Minin,RUS,2001-06-28,1246
 1670,Yu chang,Wang,TPE,,1240
 1879,Marco,Di Prima,ITA,1995-06-28,1228
-1370,Christopher,Morin Kougoucheff,FRA,1997-03-09,1226
-1612,Joshua,Rose,GBR,1999-08-29,1226
 1879,Jordan,Parker,USA,1994-02-07,1226
+1612,Joshua,Rose,GBR,1999-08-29,1226
+1370,Christopher,Morin Kougoucheff,FRA,1997-03-09,1226
 1775,Dimitri,Vidin,AUS,1994-08-28,1224
 1959,Sergey,Dorozhkin,RUS,1993-06-28,1217
 1959,Arvid,Nordquist,SWE,1998-06-08,1210
 1346,David,Norfeldt,SWE,1998-03-20,1210
 1775,Loic,Cloes,BEL,1998-11-13,1204
 1595,Sam,Matheson,NZL,1994-05-23,1200
-2013,Jonathan,Morr,GER,1998-08-11,1196
 1670,Irakli,Metreveli,GEO,1998-04-04,1196
+2013,Jonathan,Morr,GER,1998-08-11,1196
 1775,Tomas,Charlos,GER,1995-09-03,1188
 1670,Arief,Rahman,INA,1995-05-24,1184
-1959,David,Argasinski,POL,2000-08-14,1182
 1879,Omer,Katz,ISR,1999-02-17,1182
+1959,David,Argasinski,POL,2000-08-14,1182
 1494,Menelaos,Efstathiou,CYP,1999-03-02,1176
 2013,Jose,Von Hafe Perez,POR,1998-10-11,1158
 1775,Constantin,Bittoun Kouzmine,FRA,1999-01-04,1142
@@ -1927,8 +1927,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1564,Kai,Lemstra,GER,1999-06-19,1096
 1564,Maxim,Landa,DEN,1996-05-22,1092
 1775,Pol,Vaquero Fernandez,ESP,1997-04-01,1090
-2013,Sandro,Kopp,AUT,2000-05-26,1086
 1959,Francisco,Vittar,ARG,1999-05-16,1086
+2013,Sandro,Kopp,AUT,2000-05-26,1086
 1879,Henri,Squire,GER,2000-09-27,1085
 1959,Georg,Winkler,ITA,1997-01-17,1082
 1879,Cem,Erturk,TUR,1999-01-02,1082
@@ -1952,8 +1952,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1775,Tomas,Almeida,POR,1999-04-08,1016
 1879,Phongsapak,Kerdlaphee,THA,1998-05-07,1002
 1494,Mert,Alkaya,TUR,2000-06-14,998
-1377,Chun Hsin,Tseng,TPE,2001-08-08,988
 1775,Luis,Heredia Gomez,ESP,1999-07-11,988
+1377,Chun Hsin,Tseng,TPE,2001-08-08,988
 1879,Jan,Galka,POL,1999-09-24,982
 2013,Ivan,Yatsuk,USA,2000-07-24,980
 1775,Andrea,Bessire,ITA,1999-04-25,978
@@ -1977,24 +1977,24 @@ ranking,first_name,last_name,country,birthday,prize_money
 1494,Soufiane,El Mesbahi,MAR,2001-02-22,900
 1879,Lukas,Greif,USA,1999-12-02,892
 1775,Julien,Eon,FRA,1995-03-01,884
-1879,Carlo,Donato,ITA,1999-04-03,882
 1534,Michal,Mikula,POL,2000-03-04,882
+1879,Carlo,Donato,ITA,1999-04-03,882
 1879,Giuliano,Benedetti,ITA,1998-10-06,876
-1879,Juan Martin,Jalif,ARG,1999-01-17,866
 1504,Pasquale,De Giorgio,ITA,1999-04-27,866
+1879,Juan Martin,Jalif,ARG,1999-01-17,866
 1775,Marton,Szappanos,HUN,1998-12-03,846
 1775,Jason,Legall,USA,1998-11-11,836
 2013,Aidan,Mchugh,GBR,2000-07-09,830
 1775,Alessandro,Ragazzi,ITA,1996-12-24,816
-1775,David,Mrazek,CZE,1992-09-14,808
 1879,Samuel,Beddow,GBR,1995-10-27,808
+1775,David,Mrazek,CZE,1992-09-14,808
 1670,Mathieu,Scaglia,FRA,1998-11-23,800
 1670,Sergi,Fontcuberta,ESP,1997-03-13,796
 1670,Jose Maria,Martin De Oliva Carr,ESP,1996-11-16,792
 1351,Juan,Martin,ARG,1998-03-18,792
 1670,Jack,Davis,CAN,1999-06-24,788
-1879,Guido,Marson,ITA,1999-07-06,782
 1879,Paolo,Dagnino,ITA,1997-10-27,782
+1879,Guido,Marson,ITA,1999-07-06,782
 1879,Savva,Polukhin,RUS,1998-11-19,776
 1775,Nenad,Vladusic,AUT,,774
 1775,Philipp,Klimov,RUS,1999-03-11,770
@@ -2011,22 +2011,22 @@ ranking,first_name,last_name,country,birthday,prize_money
 1670,Seppe,Cuypers,BEL,1998-06-24,718
 1670,Bjorn,Hoffmann,USA,1998-03-17,714
 1775,Kaloyan,Dimitrov,BUL,1999-10-07,714
-1775,Yannick,Verwater,NED,2000-04-15,710
 1775,Hugo,Pierre,FRA,1996-03-13,710
+1775,Yannick,Verwater,NED,2000-04-15,710
 1775,Ming Chun Alan,Sou,HKG,1999-01-12,708
 1775,Daniil,Klimov,GER,1999-03-29,698
 1775,Alberto,Berbegal Moreno,ESP,1994-05-04,696
 1358,Joshua,Howard-Tripp,RSA,1999-06-24,692
 1775,Yasitha,De Silva,SRI,1995-07-03,690
 1670,Oskar,Lusti,EST,1997-11-13,681
+1879,Rimpei,Kawakami,JPN,2000-08-29,674
 1879,Sidane,Pontjodikromo,NED,2000-10-24,674
 1670,Shawn H.,Hadavi,USA,1995-10-24,674
-1879,Rimpei,Kawakami,JPN,2000-08-29,674
 1504,Juan Pablo,Grassi Mazzuchi,ARG,1999-08-28,672
 1670,Adam,Moundir,SUI,1995-04-26,652
 1464,Axel,Geller,ARG,1999-04-01,638
-1775,Pavel,Mirobyan,RUS,1998-01-04,624
 1959,Nicolas,Bianchi,ARG,1996-11-10,624
+1775,Pavel,Mirobyan,RUS,1998-01-04,624
 1775,Manuel,Bellutti,AUT,1991-12-23,618
 1775,Thiago Agustin,Tirante,ARG,2001-04-10,614
 1670,Ted,Bachev,BUL,1996-10-08,612
@@ -2041,8 +2041,8 @@ ranking,first_name,last_name,country,birthday,prize_money
 1775,Casper,Bonapart,NED,1997-01-29,552
 1775,Fabio,Costa,BRA,1993-02-06,534
 1775,Hleb,Maslau,BLR,1990-06-09,532
-1879,Gaston Ezequiel,Cantero,ARG,1998-05-10,522
 1775,Siva Deep,Kosaraju,IND,1999-01-15,522
+1879,Gaston Ezequiel,Cantero,ARG,1998-05-10,522
 1670,Louis,Clark,AUS,1999-05-28,520
 1879,Jaycer,Lyeons,USA,2000-11-16,518
 1775,Lleyton,Cronje,RSA,2000-09-22,510
@@ -2052,14 +2052,14 @@ ranking,first_name,last_name,country,birthday,prize_money
 1670,Brian,Cernoch,USA,1999-09-09,486
 1483,Siphosothando,Montsi,RSA,1999-11-09,484
 1670,Ammar,Alhogbani,USA,1998-12-15,472
-1775,Wojciech,Marek,POL,2001-05-27,468
 1775,Christophe,Tholl,LUX,1994-12-19,468
+1775,Wojciech,Marek,POL,2001-05-27,468
 1670,Guillaume,Laurent,FRA,1995-07-21,456
-1670,Rishabh,Sharda,IND,2000-01-09,452
 1670,Zlatan,Palazov,BUL,1999-05-11,452
+1670,Rishabh,Sharda,IND,2000-01-09,452
 1464,Anton,Matusevich,GBR,2001-05-30,438
-1670,Jie-Ming,Pai,TPE,2000-10-30,430
 1670,Jia-Hong,Shen,TPE,1995-02-26,430
+1670,Jie-Ming,Pai,TPE,2000-10-30,430
 1775,Paul,Jubb,GBR,1999-10-31,414
 1670,Jesse,Flores,CAN,1995-03-31,412
 1670,Alexander,Sazankov,RUS,1998-10-29,406
@@ -2068,27 +2068,27 @@ ranking,first_name,last_name,country,birthday,prize_money
 1670,Gabriel Ciro,Da Silva,BRA,1999-08-04,366
 1670,Ivan,Ponomarenko,RUS,2000-07-24,366
 1670,Sergei,Pogosian,RUS,1998-07-12,362
-1775,Alejandro,Pena,COL,1999-01-22,348
 1670,Konstantinos,Ilia,CYP,1995-05-10,348
+1775,Alejandro,Pena,COL,1999-01-22,348
 1670,Arturo,Dell'Eva,ITA,1997-06-16,325
-1670,Adria,Soriano Barrera,ESP,1999-06-02,312
-1670,Jacob,Bullard,USA,2001-02-21,312
 1670,Tad,Maclean,GBR,2000-08-18,312
-1670,Mario,Mansilla Diez,ESP,2002-05-12,312
+1670,Adria,Soriano Barrera,ESP,1999-06-02,312
 1670,Facundo,Diaz Acosta,ARG,2000-12-15,312
+1670,Jacob,Bullard,USA,2001-02-21,312
+1670,Mario,Mansilla Diez,ESP,2002-05-12,312
 1670,Juan Manuel,Lopez,COL,2000-05-18,308
 1670,Sebastian,Baez,ARG,2000-12-28,276
+1670,Juan Felipe,Castellanos,COL,2000-01-16,258
 1670,Julien,De Cuyper,FRA,1999-05-18,258
-1670,Arklon,Huertas Del Pino Cordova,PER,1994-07-16,258
-1670,Shinji,Hazawa,JPN,1999-04-12,258
+1670,Aaron,Schmid,SUI,2000-09-17,258
 1670,Teeradon,Tortrakul,THA,1996-01-29,258
 1670,Francisco,Comesana,ARG,2000-10-06,258
-1670,Juan Felipe,Castellanos,COL,2000-01-16,258
 1670,Denis,Semenikhin,USA,1992-02-20,258
-1670,Aaron,Schmid,SUI,2000-09-17,258
 1670,Alexandros,Skorilas,GRE,2000-03-16,258
 1670,Philip,Aplienz,AUT,1997-11-17,258
+1670,Arklon,Huertas Del Pino Cordova,PER,1994-07-16,258
+1670,Shinji,Hazawa,JPN,1999-04-12,258
 1670,Justin,Schlageter,GER,2001-03-09,208
-1670,Alexander Carlos,Parker,GBR,1999-03-23,172
 1670,Alex,Diaz,PUR,1997-08-02,172
+1670,Alexander Carlos,Parker,GBR,1999-03-23,172
 1670,Philip,Henning,RSA,2000-11-10,172
