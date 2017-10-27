@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require_relative 'atp_data_gatherer'
 require_relative 'ranking_fetcher_utils'
 require 'thread'
