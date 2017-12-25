@@ -4,7 +4,7 @@ require_relative 'atp_data_gatherer'
 require_relative 'ranking_fetcher_utils'
 require 'thread'
 require 'rubygems'
-require 'pry'
+#require 'pry'
 
 class Manager
 

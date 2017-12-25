@@ -18,6 +18,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rainbow (2.2.1)
+    rb-readline (0.5.5)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -47,8 +48,9 @@ PLATFORMS
 DEPENDENCIES
   nokogiri
   pry
+  rb-readline
   rspec
   rubocop
 
 BUNDLED WITH
-   1.12.5
+   1.15.4
